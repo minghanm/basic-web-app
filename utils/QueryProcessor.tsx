@@ -32,6 +32,25 @@ export default function QueryProcessor(query: string): string {
     return `${largest}`;
   }
 
+  const squareCubeRegex = /which\s+of\s+the\s+following\s+numbers\s+is\s+both\s+a\s+square\s+and\s+a\s+cube:\s*([\d,\s]+)\?/i;
+  const squareCubeMatch = query.match(squareCubeRegex);
+  if (squareCubeMatch) {
+    const numbers = squareCubeMatch[1].split(',').map(num => parseInt(num.trim(), 10));
+
+    const isPerfectSixthPower = (num: number) => {
+      const root = Math.pow(num, 1 / 6);
+      return Number.isInteger(root);
+    };
+
+    const perfectSixthPowers = numbers.filter(isPerfectSixthPower);
+
+    if (perfectSixthPowers.length > 0) {
+      return `The numbers that are both a square and a cube are: ${perfectSixthPowers.join(', ')}.`;
+    } else {
+      return "None of the given numbers are both a square and a cube.";
+    }
+  }
+
 
   return "";
 }
