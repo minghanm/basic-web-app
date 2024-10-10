@@ -98,5 +98,16 @@ export default function QueryProcessor(query: string): string {
     return `${result}`;
   }
 
+  const powerRegex = /what\sis\s(\d+)\sto\s+the\s+power\s+of\s(\d+)\?/i;
+  const powerMatch = query.match(powerRegex);
+  if (powerMatch) {
+    const base = parseInt(powerMatch[1], 10);
+    const exponent = parseInt(powerMatch[2], 10);
+    const result = Math.pow(base, exponent);
+    return `${result}`;
+  }
+
+
+
   return "";
 }
