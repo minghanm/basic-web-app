@@ -117,6 +117,16 @@ export default function QueryProcessor(query: string): string {
     return `${result}`;
   }
 
+  const multiplyAddRegex = /what\sis\s(\d+)\smultiplied\sby\s(\d+)\splus\s(\d+)\?/i;
+  const multiplyAddMatch = query.match(multiplyAddRegex);
+  if (multiplyAddMatch) {
+    const num1 = parseInt(multiplyAddMatch[1], 10);
+    const num2 = parseInt(multiplyAddMatch[2], 10);
+    const num3 = parseInt(multiplyAddMatch[3], 10);
+    const result = (num1 * num2) + num3;
+    return `${result}`;
+  }
+
 
 
   return "";
