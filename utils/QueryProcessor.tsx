@@ -89,5 +89,14 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  const subtractionRegex = /what\sis\s(\d+)\sminus\s(\d+)\?/i;
+  const subtractionMatch = query.match(subtractionRegex);
+  if (subtractionMatch) {
+    const num1 = parseInt(subtractionMatch[1], 10);
+    const num2 = parseInt(subtractionMatch[2], 10);
+    const result = num1 - num2;
+    return `${result}`;
+  }
+
   return "";
 }
