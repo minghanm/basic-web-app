@@ -127,6 +127,16 @@ export default function QueryProcessor(query: string): string {
     return `${result}`;
   }
 
+  const addMultiplyRegex = /what\sis\s(\d+)\splus\s(\d+)\smultiplied\sby\s(\d+)\?/i;
+  const addMultiplyMatch = query.match(addMultiplyRegex);
+  if (addMultiplyMatch) {
+    const num1 = parseInt(addMultiplyMatch[1], 10); // The number before "plus"
+    const num2 = parseInt(addMultiplyMatch[2], 10); // The number before "multiplied by"
+    const num3 = parseInt(addMultiplyMatch[3], 10); // The number after "multiplied by"
+    const result = num1 + (num2 * num3); // Multiplication happens before addition
+    return `${result}`;
+  }
+
 
 
   return "";
