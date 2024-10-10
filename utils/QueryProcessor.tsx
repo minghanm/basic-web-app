@@ -65,6 +65,7 @@ export default function QueryProcessor(query: string): string {
   if (primeMatch) {
     const numbers = primeMatch[1].split(',').map(num => parseInt(num.trim(), 10));
 
+    // Helper function to check if a number is prime
     const isPrime = (num: number) => {
       if (num <= 1) return false;
       for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -73,6 +74,20 @@ export default function QueryProcessor(query: string): string {
       return true;
     };
 
+    // Iterate through the numbers and collect primes
+    const primes: number[] = [];
+    for (let i = 0; i < numbers.length; i++) {
+      if (isPrime(numbers[i])) {
+        primes.push(numbers[i]);
+      }
+    }
+
+    if (primes.length > 0) {
+      return `${primes.join(', ')}.`;
+    } else {
+      return "None";
+    }
+  }
 
   return "";
 }
