@@ -47,7 +47,7 @@ export default function QueryProcessor(query: string): string {
     if (perfectSixthPowers.length > 0) {
       return `${perfectSixthPowers.join(', ')}`;
     } else {
-      return "None of the given numbers are both a square and a cube.";
+      return "None";
     }
   }
 
