@@ -60,5 +60,19 @@ export default function QueryProcessor(query: string): string {
     return `${result}`;
   }
 
+  const primeRegex = /which\s+of\s+the\s+following\s+numbers\s+are\s+primes:\s*([\d,\s]+)\?/i;
+  const primeMatch = query.match(primeRegex);
+  if (primeMatch) {
+    const numbers = primeMatch[1].split(',').map(num => parseInt(num.trim(), 10));
+
+    const isPrime = (num: number) => {
+      if (num <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    };
+
+
   return "";
 }
