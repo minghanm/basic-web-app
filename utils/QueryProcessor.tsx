@@ -107,6 +107,16 @@ export default function QueryProcessor(query: string): string {
     return `${result}`;
   }
 
+  const additionRegex = /what\sis\s(\d+)\splus\s(\d+)\splus\s(\d+)\?/i;
+  const additionMatch = query.match(additionRegex);
+  if (additionMatch) {
+    const num1 = parseInt(additionMatch[1], 10);
+    const num2 = parseInt(additionMatch[2], 10);
+    const num3 = parseInt(additionMatch[3], 10);
+    const result = num1 + num2 + num3;
+    return `${result}`;
+  }
+
 
 
   return "";
