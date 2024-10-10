@@ -21,7 +21,7 @@ export default function QueryProcessor(query: string): string {
     const num1 = parseInt(match[1], 10);
     const num2 = parseInt(match[2], 10);
     const result = num1 + num2;
-    return `${result}.`;
+    return `${result}`;
   }
 
   const largestNumberRegex = /which\s+of\s+the\s+following\s+numbers\s+is\s+the\s+largest:\s*(\d+),\s*(\d+),\s*(\d+)\?/i;
@@ -29,7 +29,7 @@ export default function QueryProcessor(query: string): string {
   if (largestMatch) {
     const numbers = largestMatch.slice(1).map(num => parseInt(num, 10));
     const largest = Math.max(...numbers);
-    return `${largest}.`;
+    return `${largest}`;
   }
 
 
