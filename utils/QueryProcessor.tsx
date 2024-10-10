@@ -83,7 +83,7 @@ export default function QueryProcessor(query: string): string {
     }
 
     if (primes.length > 0) {
-      return `${primes.join(', ')}.`;
+      return `${primes.join(', ')}`;
     } else {
       return "None";
     }
