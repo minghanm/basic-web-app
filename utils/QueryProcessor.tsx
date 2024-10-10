@@ -45,12 +45,20 @@ export default function QueryProcessor(query: string): string {
     const perfectSixthPowers = numbers.filter(isPerfectSixthPower);
 
     if (perfectSixthPowers.length > 0) {
-      return `The numbers that are both a square and a cube are: ${perfectSixthPowers.join(', ')}.`;
+      return `${perfectSixthPowers.join(', ')}`;
     } else {
       return "None of the given numbers are both a square and a cube.";
     }
   }
 
+  const multiplicationRegex = /what\sis\s(\d+)\smultiplied\sby\s(\d+)\?/i;
+  const multiplicationMatch = query.match(multiplicationRegex);
+  if (multiplicationMatch) {
+    const num1 = parseInt(multiplicationMatch[1], 10);
+    const num2 = parseInt(multiplicationMatch[2], 10);
+    const result = num1 * num2;
+    return `${result}`;
+  }
 
   return "";
 }
