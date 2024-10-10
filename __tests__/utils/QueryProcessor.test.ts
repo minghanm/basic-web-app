@@ -22,4 +22,9 @@ describe("QueryProcessor", () => {
         const response = QueryProcessor("What is your Andrew ID?");
         expect(response).toBe("minghanm");
     });
+
+    test('returns Name when queried with "What is your name?"', () => {
+        const response = QueryProcessor("What is your name?");
+        expect(response).toBe("IMFINE");
+    });
 });

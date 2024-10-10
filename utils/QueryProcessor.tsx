@@ -11,5 +11,9 @@ export default function QueryProcessor(query: string): string {
     return "minghanm";
   }
 
+  if (query.toLowerCase() == "what is your name?") {
+    return "IMFINE";
+  }
+
   return "";
 }
