@@ -21,7 +21,7 @@ export default function QueryProcessor(query: string): string {
     const num1 = parseInt(match[1], 10);
     const num2 = parseInt(match[2], 10);
     const result = num1 + num2;
-    return `The result of ${num1} plus ${num2} is ${result}.`;
+    return `${result}.`;
   }
 
   return "";
