@@ -24,5 +24,14 @@ export default function QueryProcessor(query: string): string {
     return `${result}.`;
   }
 
+  const largestNumberRegex = /which\s+of\s+the\s+following\s+numbers\s+is\s+the\s+largest:\s*(\d+),\s*(\d+),\s*(\d+)\?/i;
+  const largestMatch = query.match(largestNumberRegex);
+  if (largestMatch) {
+    const numbers = largestMatch.slice(1).map(num => parseInt(num, 10));
+    const largest = Math.max(...numbers);
+    return `${largest}.`;
+  }
+
+
   return "";
 }
